@@ -220,6 +220,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.txeRegex.setTextCursor(text_cur)
 
     def __mark_error(self, lineno, colno):
+        if lineno is None or colno is None:
+            return
         with blockSignals(self.txeRegex):
             text_cur = self.txeRegex.textCursor()
             prev_pos = text_cur.position()
